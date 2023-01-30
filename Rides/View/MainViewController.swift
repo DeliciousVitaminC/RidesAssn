@@ -113,17 +113,17 @@ extension MainViewController : VehicleServiceDelegate {
     }
     
     func failedFetchData() {
-//        DispatchQueue.main.async {
+        DispatchQueue.main.async {
 //            self.presentAlert(with: Constants.maxAttemptErrorMessage)
-//            self.spinner.isHidden = true
-//        }
+            self.spinner.isHidden = true
+        }
     }
     
     func failedParseData() {
-//        DispatchQueue.main.async {
-//            self.presentAlert(with: Constants.incorrectDataFormatErrorMessage)
-//            self.spinner.isHidden = true
-//        }
+        DispatchQueue.main.async {
+            //self.presentAlert(with: Constants.incorrectDataFormatErrorMessage)
+            self.spinner.isHidden = true
+        }
     }
 }
 
