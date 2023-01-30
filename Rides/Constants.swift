@@ -15,6 +15,7 @@ struct Constants {
     static let maxAttemptAllowed = 5
     static let maxAttemptErrorMessage = "A network issue have occurred. Please check your network and try again later."
     static let incorrectDataFormatErrorMessage = "Data format mismatch. Please contact support and provide this information."
+    static let inputInvalidErrorMessage = "Please input an integer between 1 and 100"
     static let reusableCellId = "ItemCell"
     static let titleVin = "Vehicle ID"
     static let titleMake = "Make and Model"

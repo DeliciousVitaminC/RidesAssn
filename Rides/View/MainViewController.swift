@@ -136,14 +136,24 @@ extension MainViewController : UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if searchTextField.text != "" {
-            if let batchSize = Int(searchTextField.text!){
-                vehicleService.fetchData(size: batchSize)
+            if validateInput(searchTextField.text!){
+                vehicleService.fetchData(size: Int(searchTextField.text!)!)
                 spinner.isHidden = false
             }
             searchTextField.text = ""
             tableView.alpha = 0
             spinner.startAnimating()
         }
+    }
+    
+    func validateInput(_ inputString: String) -> Bool {
+        if let querySize = Int(inputString) {
+            if querySize >= 1 && querySize <= 100{
+                return true
+            }
+        }
+        presentAlert(with: Constants.inputInvalidErrorMessage)
+        return false
     }
 }
 
