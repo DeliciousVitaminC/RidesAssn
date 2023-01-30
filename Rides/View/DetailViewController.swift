@@ -8,26 +8,33 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-
+    private var selectedVehicle : VehicleModel?
+    
     @IBOutlet weak var mainView: UIView!
+    @IBOutlet weak var vinLabel: UILabel!
+    @IBOutlet weak var makeLabel: UILabel!
+    @IBOutlet weak var colorLabel: UILabel!
+    @IBOutlet weak var typeLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         mainView.layer.cornerRadius = 45
-
-        // Do any additional setup after loading the view.
+        
+        if let vin = selectedVehicle?.getVehicleInfo().vin,
+           let make = selectedVehicle?.getVehicleInfo().make_and_model,
+           let color = selectedVehicle?.getVehicleInfo().color,
+           let carType = selectedVehicle?.getVehicleInfo().car_type {
+            vinLabel.text = "\(Constants.cellTitleVin): \n\(vin)"
+            makeLabel.text = "\(Constants.cellTitleMake): \n\(make)"
+            colorLabel.text = "\(Constants.cellTitleColor): \n\(color)"
+            typeLabel.text = "\(Constants.cellTitleType): \n\(carType)"
+        }
+        
+        print(selectedVehicle!.getCarbonEmission())
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func selectVehicle(for vehicle : VehicleModel){
+        self.selectedVehicle = vehicle
     }
-    */
-
 }
