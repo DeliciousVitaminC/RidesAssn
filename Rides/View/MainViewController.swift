@@ -8,6 +8,9 @@
 import UIKit
 
 class MainViewController: UIViewController {
+    
+    private var vehicleList = [VehicleModel]()
+    private var vehicleService = VehicleService()
 
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
@@ -20,11 +23,29 @@ class MainViewController: UIViewController {
         searchTextField.keyboardType = .numberPad
         searchTextField.addDoneButtonOnKeyBoardWithControl()
         
+        vehicleService.delegate = self
+        
         tableView.layer.cornerRadius = 25
         
     }
-
 }
+
+//MARK: - VehicleService Extensions
+
+extension MainViewController : VehicleServiceDelegate {
+    func didFetchdata(vehicleList: [VehicleModel]) {
+        DispatchQueue.main.async {
+            self.vehicleList = vehicleList
+            self.vehicleList.sort {
+                $0.getVehicleInfo().vin < $1.getVehicleInfo().vin
+            }
+            print(vehicleList.count)
+            print(vehicleList[vehicleList.count - 1].getCarbonEmission())
+        }
+    }
+}
+
+//MARK: - UITextField Extensions
 
 extension MainViewController : UITextFieldDelegate {
     @IBAction func searchButtonPressed(_ sender: UIButton) {
@@ -33,7 +54,7 @@ extension MainViewController : UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if searchTextField.text != "" {
-            print("TODO: Replace with actual query" + searchTextField!.text!)
+            vehicleService.fetchData(size: Int(searchTextField.text!)!)
             searchTextField.text = ""
         }
     }

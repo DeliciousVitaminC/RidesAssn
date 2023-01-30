@@ -12,5 +12,6 @@ struct Constants {
     static let requestURL = "https://random-data-api.com/api/vehicle/random_vehicle?size="
     static let segueId = "goToDetail"
     static let searchFieldPlaceholder = "Num to Query"
+    static let maxAttemptErrorMessage = "A network issue have occurred. Please check your network and try again later"
     
 }
