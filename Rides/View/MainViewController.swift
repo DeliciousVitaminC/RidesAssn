@@ -100,7 +100,7 @@ extension MainViewController : UITableViewDelegate {
 //MARK: - VehicleService Extensions
 
 extension MainViewController : VehicleServiceDelegate {
-    func didFetchdata(vehicleList: [VehicleModel]) {
+    func didFetchData(vehicleList: [VehicleModel]) {
         DispatchQueue.main.async {
             self.vehicleList = vehicleList
             self.vehicleList.sort {
@@ -109,6 +109,20 @@ extension MainViewController : VehicleServiceDelegate {
             self.spinner.isHidden = true
             self.tableView.alpha = 1
             self.tableView.reloadData()
+        }
+    }
+    
+    func failedFetchData() {
+        DispatchQueue.main.async {
+            self.presentAlert(with: Constants.maxAttemptErrorMessage)
+            self.spinner.isHidden = true
+        }
+    }
+    
+    func failedParseData() {
+        DispatchQueue.main.async {
+            self.presentAlert(with: Constants.incorrectDataFormatErrorMessage)
+            self.spinner.isHidden = true
         }
     }
 }
@@ -143,3 +157,11 @@ extension UITextField {
     }
 }
 
+extension MainViewController{
+    private func presentAlert(with message : String){
+        let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Confirm", style: .default)
+        alert.addAction(action)
+        present(alert, animated: true)
+    }
+}

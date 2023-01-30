@@ -21,15 +21,16 @@ class DetailViewController: UIViewController {
         
         mainView.layer.cornerRadius = 45
         
-        if let vin = selectedVehicle?.getVehicleInfo().vin,
+        guard let vin = selectedVehicle?.getVehicleInfo().vin,
            let make = selectedVehicle?.getVehicleInfo().make_and_model,
            let color = selectedVehicle?.getVehicleInfo().color,
-           let carType = selectedVehicle?.getVehicleInfo().car_type {
-            vinLabel.text = "\(Constants.titleVin): \n\(vin)"
-            makeLabel.text = "\(Constants.titleMake): \n\(make)"
-            colorLabel.text = "\(Constants.titleColor): \n\(color)"
-            typeLabel.text = "\(Constants.titleType): \n\(carType)"
+           let carType = selectedVehicle?.getVehicleInfo().car_type else {
+            fatalError("Vehicle model passed in is corrupted")
         }
+        vinLabel.text = "\(Constants.titleVin): \n\(vin)"
+        makeLabel.text = "\(Constants.titleMake): \n\(make)"
+        colorLabel.text = "\(Constants.titleColor): \n\(color)"
+        typeLabel.text = "\(Constants.titleType): \n\(carType)"
         
         print(selectedVehicle!.getCarbonEmission())
     }

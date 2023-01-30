@@ -8,44 +8,52 @@
 import Foundation
 
 protocol VehicleServiceDelegate {
-    func didFetchdata( vehicleList : [VehicleModel] )
+    func didFetchData(vehicleList : [VehicleModel])
+    func failedFetchData()
+    func failedParseData()
 }
 
 class VehicleService {
     private var vehicleList = [VehicleModel]()
+    private var currentAttempts = 0
+    
     var delegate : VehicleServiceDelegate?
     
-//    func fetchData(size batch: Int, maxAttemp limit : Int) -> Bool {
-//        var callCount = 0
-//        while vehicleList.count == 0 && callCount <= limit {
-//            print("querying........................")
-//            callCount += 1
-//            self.queryData(size: batch)
-//        }
-//        print("Completed loop with call count of \(callCount)")
-//        if callCount <= limit{
-//            return true
-//        }else{
-//            return false
-//        }
-//    }
+    func fetchData(size batchSize: Int) {
+        attemptGuard(size: batchSize)
+        print("Completed loop with call count of \(currentAttempts)")
+    }
     
-    func fetchData(size : Int) {
+    func queryData(size : Int) {
+        currentAttempts += 1
         let urlString = Constants.requestURL + String(size)
         if let url = URL(string: urlString) {
             let session = URLSession(configuration: .default)
             session.dataTask(with: url) { data, response, error in
                 if let e = error {
                     print(e)
+                    self.attemptGuard(size: size)
                 } else {
                     if let safeData = data {
                         if let vehicleInfo = self.parseJSON(data: safeData){
                             self.vehicleList = vehicleInfo.map({return VehicleModel($0)})
-                            self.delegate?.didFetchdata(vehicleList: self.vehicleList)
+                            self.currentAttempts = 0
+                            self.delegate?.didFetchData(vehicleList: self.vehicleList)
+                        }
+                        else {
+                            self.delegate?.failedParseData()
                         }
                     }
                 }
             }.resume()
+        }
+    }
+    
+    func attemptGuard(size : Int) {
+        if currentAttempts <= Constants.maxAttemptAllowed {
+            queryData(size: size)
+        } else {
+            delegate?.failedFetchData()
         }
     }
     
