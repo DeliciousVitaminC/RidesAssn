@@ -136,9 +136,11 @@ extension MainViewController : UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if searchTextField.text != "" {
-            vehicleService.fetchData(size: Int(searchTextField.text!)!)
+            if let batchSize = Int(searchTextField.text!){
+                vehicleService.fetchData(size: batchSize)
+                spinner.isHidden = false
+            }
             searchTextField.text = ""
-            spinner.isHidden = false
             tableView.alpha = 0
             spinner.startAnimating()
         }
