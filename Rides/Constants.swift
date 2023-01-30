@@ -22,4 +22,7 @@ struct Constants {
     static let titleColor = "Color"
     static let titleType = "Car Type"
     
+    static let page01Id = "Page01ViewController"
+    static let page02Id = "Page02ViewController"
+    
 }

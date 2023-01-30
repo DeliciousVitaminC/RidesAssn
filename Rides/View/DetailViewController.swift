@@ -9,33 +9,19 @@ import UIKit
 
 class DetailViewController: UIViewController {
     private var selectedVehicle : VehicleModel?
-    
-    @IBOutlet weak var mainView: UIView!
-    @IBOutlet weak var vinLabel: UILabel!
-    @IBOutlet weak var makeLabel: UILabel!
-    @IBOutlet weak var colorLabel: UILabel!
-    @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var containerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        mainView.layer.cornerRadius = 45
-        
-        guard let vin = selectedVehicle?.getVehicleInfo().vin,
-           let make = selectedVehicle?.getVehicleInfo().make_and_model,
-           let color = selectedVehicle?.getVehicleInfo().color,
-           let carType = selectedVehicle?.getVehicleInfo().car_type else {
-            fatalError("Vehicle model passed in is corrupted")
-        }
-        vinLabel.text = "\(Constants.titleVin): \n\(vin)"
-        makeLabel.text = "\(Constants.titleMake): \n\(make)"
-        colorLabel.text = "\(Constants.titleColor): \n\(color)"
-        typeLabel.text = "\(Constants.titleType): \n\(carType)"
-        
-        print(selectedVehicle!.getCarbonEmission())
     }
     
     func selectVehicle(for vehicle : VehicleModel){
         self.selectedVehicle = vehicle
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! ContentPageViewController
+        destinationVC.selectVehicle(for: selectedVehicle!)
+        
     }
 }

@@ -11,6 +11,9 @@
 		867C73F2298817DC00337AE9 /* VehicleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867C73F1298817DC00337AE9 /* VehicleData.swift */; };
 		867C73F42988180500337AE9 /* VehicleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867C73F32988180500337AE9 /* VehicleService.swift */; };
 		867C73F62988182E00337AE9 /* VehicleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867C73F52988182E00337AE9 /* VehicleModel.swift */; };
+		867C73F829886D4D00337AE9 /* Page01ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867C73F729886D4D00337AE9 /* Page01ViewController.swift */; };
+		867C73FA29886D6200337AE9 /* Page02ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867C73F929886D6200337AE9 /* Page02ViewController.swift */; };
+		86987C942988701A00E09CCF /* ContentPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86987C932988701A00E09CCF /* ContentPageViewController.swift */; };
 		86B850242988011200229426 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B850232988011200229426 /* AppDelegate.swift */; };
 		86B850262988011200229426 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B850252988011200229426 /* SceneDelegate.swift */; };
 		86B850282988011200229426 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B850272988011200229426 /* MainViewController.swift */; };
@@ -25,6 +28,9 @@
 		867C73F1298817DC00337AE9 /* VehicleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleData.swift; sourceTree = "<group>"; };
 		867C73F32988180500337AE9 /* VehicleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleService.swift; sourceTree = "<group>"; };
 		867C73F52988182E00337AE9 /* VehicleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleModel.swift; sourceTree = "<group>"; };
+		867C73F729886D4D00337AE9 /* Page01ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page01ViewController.swift; sourceTree = "<group>"; };
+		867C73F929886D6200337AE9 /* Page02ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page02ViewController.swift; sourceTree = "<group>"; };
+		86987C932988701A00E09CCF /* ContentPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentPageViewController.swift; sourceTree = "<group>"; };
 		86B850202988011200229426 /* Rides.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rides.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86B850232988011200229426 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86B850252988011200229426 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +91,9 @@
 				86B850292988011200229426 /* Main.storyboard */,
 				86B850272988011200229426 /* MainViewController.swift */,
 				867C73EF29880AC900337AE9 /* DetailViewController.swift */,
+				867C73F729886D4D00337AE9 /* Page01ViewController.swift */,
+				867C73F929886D6200337AE9 /* Page02ViewController.swift */,
+				86987C932988701A00E09CCF /* ContentPageViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -180,8 +189,11 @@
 				867C73F42988180500337AE9 /* VehicleService.swift in Sources */,
 				86B850282988011200229426 /* MainViewController.swift in Sources */,
 				86B850242988011200229426 /* AppDelegate.swift in Sources */,
+				867C73FA29886D6200337AE9 /* Page02ViewController.swift in Sources */,
 				867C73F2298817DC00337AE9 /* VehicleData.swift in Sources */,
+				86987C942988701A00E09CCF /* ContentPageViewController.swift in Sources */,
 				867C73F029880AC900337AE9 /* DetailViewController.swift in Sources */,
+				867C73F829886D4D00337AE9 /* Page01ViewController.swift in Sources */,
 				86B850262988011200229426 /* SceneDelegate.swift in Sources */,
 				867C73F62988182E00337AE9 /* VehicleModel.swift in Sources */,
 				86B850382988017300229426 /* Constants.swift in Sources */,
