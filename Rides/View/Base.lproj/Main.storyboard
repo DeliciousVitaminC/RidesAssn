@@ -115,6 +115,7 @@
                     <navigationItem key="navigationItem" title="Rides" id="7dT-JG-66Y"/>
                     <connections>
                         <outlet property="searchTextField" destination="LGD-Xc-chW" id="CRi-4u-LRV"/>
+                        <outlet property="sortPopupButton" destination="odJ-XK-ZEu" id="3JI-0J-uFn"/>
                         <outlet property="spinner" destination="MDn-k7-t1H" id="hE0-II-AYx"/>
                         <outlet property="tableView" destination="E3Y-WG-kj0" id="OTv-nI-9Mx"/>
                         <segue destination="u5E-hd-dlh" kind="show" identifier="goToDetail" id="Tyk-51-vns"/>

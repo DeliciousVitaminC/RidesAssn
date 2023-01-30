@@ -25,10 +25,10 @@ class DetailViewController: UIViewController {
            let make = selectedVehicle?.getVehicleInfo().make_and_model,
            let color = selectedVehicle?.getVehicleInfo().color,
            let carType = selectedVehicle?.getVehicleInfo().car_type {
-            vinLabel.text = "\(Constants.cellTitleVin): \n\(vin)"
-            makeLabel.text = "\(Constants.cellTitleMake): \n\(make)"
-            colorLabel.text = "\(Constants.cellTitleColor): \n\(color)"
-            typeLabel.text = "\(Constants.cellTitleType): \n\(carType)"
+            vinLabel.text = "\(Constants.titleVin): \n\(vin)"
+            makeLabel.text = "\(Constants.titleMake): \n\(make)"
+            colorLabel.text = "\(Constants.titleColor): \n\(color)"
+            typeLabel.text = "\(Constants.titleType): \n\(carType)"
         }
         
         print(selectedVehicle!.getCarbonEmission())

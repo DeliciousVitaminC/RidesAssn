@@ -14,9 +14,9 @@ struct Constants {
     static let searchFieldPlaceholder = "Num to Query"
     static let maxAttemptErrorMessage = "A network issue have occurred. Please check your network and try again later"
     static let reusableCellId = "ItemCell"
-    static let cellTitleVin = "Vehicle ID"
-    static let cellTitleMake = "Make and Model"
-    static let cellTitleColor = "Color"
-    static let cellTitleType = "Car Type"
+    static let titleVin = "Vehicle ID"
+    static let titleMake = "Make and Model"
+    static let titleColor = "Color"
+    static let titleType = "Car Type"
     
 }

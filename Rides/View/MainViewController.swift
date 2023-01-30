@@ -15,7 +15,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
-    
+    @IBOutlet weak var sortPopupButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +33,38 @@ class MainViewController: UIViewController {
         tableView.delegate = self
         tableView.alpha = 0
         
+        popupMenuInit()
     }
 }
+//MARK: - Popup Menu Extensions
+extension MainViewController {
+    func popupMenuInit() {
+        let completionHandler = { (action : UIAction) in
+            if action.title == Constants.titleType{
+                self.vehicleList.sort {
+                    $0.getVehicleInfo().car_type < $1.getVehicleInfo().car_type
+                }
+            } else if action.title == Constants.titleVin {
+                self.vehicleList.sort {
+                    $0.getVehicleInfo().vin < $1.getVehicleInfo().vin
+                }
+            } else {
+                fatalError("Popup option does not match any available sorting method")
+            }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+        sortPopupButton.menu = UIMenu(children:[
+            UIAction(title: Constants.titleVin, state: .on, handler: completionHandler),
+            UIAction(title: Constants.titleType, handler: completionHandler)
+        ])
+        sortPopupButton.showsMenuAsPrimaryAction = true
+        sortPopupButton.changesSelectionAsPrimaryAction = true
+    }
+}
+
+
 //MARK: - TableView Extensions
 extension MainViewController : UITableViewDataSource {
     
