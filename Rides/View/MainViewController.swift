@@ -38,6 +38,7 @@ class MainViewController: UIViewController {
 }
 //MARK: - Popup Menu Extensions
 extension MainViewController {
+    // init popup menu for sorting method selection
     func popupMenuInit() {
         let completionHandler = { (action : UIAction) in
             if action.title == Constants.titleType{
@@ -100,6 +101,7 @@ extension MainViewController : UITableViewDelegate {
 //MARK: - VehicleService Extensions
 
 extension MainViewController : VehicleServiceDelegate {
+    // fill table view with default sorting by vin
     func didFetchData(vehicleList: [VehicleModel]) {
         DispatchQueue.main.async {
             self.vehicleList = vehicleList
@@ -162,6 +164,7 @@ extension UITextField {
 }
 
 extension MainViewController{
+    // shortcut to create alert with preset error message
     private func presentAlert(with message : String){
         let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "Confirm", style: .default)

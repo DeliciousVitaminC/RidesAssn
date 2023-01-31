@@ -21,10 +21,10 @@ class VehicleService {
     
     func fetchData(size batchSize: Int) {
         attemptGuard(size: batchSize)
-//        print("Completed loop with call count of \(currentAttempts)")
     }
     
-    func queryData(size : Int) {
+    // query data from API and convert decoded raw data into view model
+    private func queryData(size : Int) {
         currentAttempts += 1
         let urlString = Constants.requestURL + String(size)
         if let url = URL(string: urlString) {
@@ -49,7 +49,8 @@ class VehicleService {
         }
     }
     
-    func attemptGuard(size : Int) {
+    // for retry after failed query attempt before reaching max attempts allowed
+    private func attemptGuard(size : Int) {
         if currentAttempts <= Constants.maxAttemptAllowed {
             queryData(size: size)
         } else {

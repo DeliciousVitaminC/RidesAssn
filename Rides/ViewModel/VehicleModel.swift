@@ -7,6 +7,7 @@
 
 import Foundation
 
+// View Model for all information in table cell and detailed page
 class VehicleModel {
     private var vehicleInfo : VehicleData
     private var carbonEmission : Double = 0.0
@@ -23,6 +24,7 @@ class VehicleModel {
             return Double((kilo - 5000)) * 1.5 + 5000.0
         }
         else {
+            // for invalid input or data corruption in transmission
             return -1.0
         }
     }
