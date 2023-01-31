@@ -21,6 +21,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         searchTextField.delegate = self
+        // limit onscreen keyboard type to numbers
         searchTextField.keyboardType = .numberPad
         searchTextField.addDoneButtonOnKeyBoardWithControl()
         
@@ -135,9 +136,10 @@ extension MainViewController : UITextFieldDelegate {
     @IBAction func searchButtonPressed(_ sender: UIButton) {
         searchTextField.endEditing(true)
     }
-    
+
     func textFieldDidEndEditing(_ textField: UITextField) {
         if searchTextField.text != "" {
+            // add additional check in case user uses physical keyboard instead of onscreen keyboard
             if vehicleService.validateInput(searchTextField.text!){
                 vehicleService.fetchData(size: Int(searchTextField.text!)!)
                 spinner.isHidden = false
