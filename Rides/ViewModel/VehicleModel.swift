@@ -17,10 +17,13 @@ class VehicleModel {
     }
     
     private func estimateCarbonEmission(_ kilo : Int) -> Double {
-        if kilo <= 5000 {
+        if kilo <= 5000 && kilo >= 0 {
             return Double(kilo) * 1.0
-        } else {
+        } else if kilo > 5000 {
             return Double((kilo - 5000)) * 1.5 + 5000.0
+        }
+        else {
+            return -1.0
         }
     }
     

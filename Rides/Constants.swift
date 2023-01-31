@@ -24,5 +24,6 @@ struct Constants {
     
     static let page01Id = "Page01ViewController"
     static let page02Id = "Page02ViewController"
+    static let mainViewId = "mainBoard"
     
 }

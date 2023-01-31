@@ -21,7 +21,7 @@ class VehicleService {
     
     func fetchData(size batchSize: Int) {
         attemptGuard(size: batchSize)
-        print("Completed loop with call count of \(currentAttempts)")
+//        print("Completed loop with call count of \(currentAttempts)")
     }
     
     func queryData(size : Int) {
@@ -55,6 +55,15 @@ class VehicleService {
         } else {
             delegate?.failedFetchData()
         }
+    }
+    
+    func validateInput(_ inputString: String) -> Bool {
+        if let querySize = Int(inputString) {
+            if querySize >= 1 && querySize <= 100{
+                return true
+            }
+        }
+        return false
     }
     
     private func parseJSON(data : Data) -> [VehicleData]? {
